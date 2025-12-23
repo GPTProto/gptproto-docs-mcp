@@ -1,0 +1,48 @@
+{
+  "name": "gptproto-docs-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for GPTProto API documentation",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "gptproto-docs-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && npm run copy:index",
+    "build:index": "npx tsx scripts/build-index.ts",
+    "copy:index": "mkdir -p dist/generated && cp src/generated/docs-index.json dist/generated/",
+    "prepublishOnly": "npm run build:index && npm run build",
+    "start": "node dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "mcp",
+    "gptproto",
+    "api",
+    "documentation",
+    "claude",
+    "model-context-protocol"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

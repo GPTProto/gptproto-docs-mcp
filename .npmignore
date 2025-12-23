@@ -1,0 +1,20 @@
+# Files not published to npm
+
+# Internal documentation
+INTERNAL.md
+
+# Source code (only publish dist)
+src/
+scripts/
+tsconfig.json
+
+# Development files
+.gitignore
+.DS_Store
+*.log
+
+# Tests
+tests/
+__tests__/
+*.test.ts
+*.spec.ts

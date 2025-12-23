@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Generated files (rebuild with npm run build:index)
+src/generated/
+
+# Temp directory (cloned docs repo)
+.temp/
+
+# Cache
+.gptproto-docs-mcp/
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

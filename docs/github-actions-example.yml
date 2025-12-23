@@ -1,0 +1,41 @@
+# Create this file in the gptproto_doc repository
+# .github/workflows/update-index.yml
+#
+# Automatically rebuild and publish docs-index.json on each push to main branch
+
+name: Update Docs Index
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install gray-matter tsx typescript
+
+      - name: Download build script
+        run: |
+          curl -o build-index.ts https://raw.githubusercontent.com/chencanbin/gptproto-docs-mcp/main/scripts/build-index-standalone.ts
+
+      - name: Build index
+        run: npx tsx build-index.ts
+
+      - name: Commit and push index
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add docs-index.json
+          git diff --staged --quiet || git commit -m "Update docs index"
+          git push

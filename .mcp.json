@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "gptproto-docs": {
+      "command": "node",
+      "args": ["dist/index.js"]
+    }
+  }
+}
